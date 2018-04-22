@@ -5,6 +5,7 @@ const userModel = require('../models/users')
 //////////////////////////////////////////////////////////////////////////////
 
 function create(req, res, next){
+  console.log('controller create')
   if(!req.body.username){
     return next({ status: 400, message: 'Bad username'})
   }
@@ -14,6 +15,14 @@ function create(req, res, next){
   }
 
   userModel.create(req.body.username, req.body.password)
+  .then(function(data){
+    return res.status(201).send({ data })
+  })
+  .catch(next)
+}
+
+function getAll(req, res, next) {
+  userModel.getAll()
   .then(function(data){
     return res.status(201).send({ data })
   })

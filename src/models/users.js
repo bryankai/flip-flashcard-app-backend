@@ -6,11 +6,16 @@ const bcrypt = require('bcrypt-as-promised')
 //////////////////////////////////////////////////////////////////////////////
 
 function getOneByUserName(username){
+  console.log('model username')
   return (
     db('users')
     .where({ username })
     .first()
   )
+}
+
+function getAll(){
+  return db('users')
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -25,7 +30,7 @@ function getOneByUserName(username){
 //////////////////////////////////////////////////////////////////////////////
 
 function create(username, password){
-
+    console.log('model create')
   // check to see of user already exists
   return getOneByUserName(username)
   .then(function(data){
