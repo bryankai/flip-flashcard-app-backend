@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     table.string('bibleReference').notNullable()
     table.string('passage').notNullable()
-    table.array('topics')
+    table.string('topics')
     table.boolean('inNewTestament')
     table.integer('decks_id').notNullable().references('decks.id')
     table.timestamps(true, true) // true = default timestamps, true = default to now
