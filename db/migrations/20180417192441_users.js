@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     table.string('username').notNullable()
     table.string('password').notNullable()
+    table.string('name').notNullable()
     table.string('email').notNullable()
     table.integer('score')
     table.timestamps(true, true) // true = default timestamps, true = default to now
