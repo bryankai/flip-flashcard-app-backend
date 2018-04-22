@@ -1,4 +1,4 @@
-# auth-example-backend
+# bible-memorization-backend
 
 ## To Install
 

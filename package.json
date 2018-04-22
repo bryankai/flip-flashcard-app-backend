@@ -1,18 +1,8 @@
 {
-  "name": "auth-example-backend",
+  "name": "bible-memorization-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "## To Install",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js",
-    "knex": "knex",
-    "latest": "knex migrate:latest",
-    "rollback": "knex migrate:rollback"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.18.2",
@@ -23,10 +13,29 @@
     "morgan": "^1.9.0",
     "pg": "^7.4.1"
   },
-  "devDependencies": {
+  "devDependencies": { 
     "chai": "^4.1.2",
     "dotenv": "^5.0.1",
-    "mocha": "^5.1.0",
+    "mocha": "^5.1.1",
     "nodemon": "^1.17.3"
-  }
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js",
+    "knex": "knex",
+    "latest": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryankai/bible-memorization-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryankai/bible-memorization-backend/issues"
+  },
+  "homepage": "https://github.com/bryankai/bible-memorization-backend#readme"
 }
