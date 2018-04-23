@@ -7,7 +7,10 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex(TABLE_NAME).insert([
         {id: 1, deckName: 'Fav Collection', description: 'My favorite verses', users_id: '1'},
-        {id: 2, deckName: 'New deck', description: 'My second deck', users_id: '1'}
+        {id: 2, deckName: 'New deck', description: 'My second deck', users_id: '1'},
+        {id: 3, deckName: 'Test User Deck 1', description: 'This is test users first deck', users_id: '2'},
+        {id: 4, deckName: 'Test User Deck 2', description: 'This is test users second deck', users_id: '2'},
+        {id: 5, deckName: 'User 3 Deck', description: 'This is a User 3  deck', users_id: '3'}
       ])
     })
     .then(() => {
