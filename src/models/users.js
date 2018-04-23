@@ -6,8 +6,6 @@ const bcrypt = require('bcrypt-as-promised')
 ////////////////////////////////////////////////////////////////////
 
 function getUserByEmail(email){
-  console.log('model email')
-  console.log(email)
   return (
     db('users')
     .where({ email })
@@ -16,7 +14,6 @@ function getUserByEmail(email){
 }
 
 function createUser(email, password){
-    console.log('model create')
   // check to see of user already exists
   return getUserByEmail(email)
   .then(function(data){
@@ -62,6 +59,14 @@ function getOneDeck(users_id, id){
   )
 }
 
+function createDeck(users_id, deckName, description) {
+  return (
+    db('decks')
+    .insert({ users_id, deckName, description })
+    .returning('*')
+  )
+}
+
 
 ////////////////////////////////////////////////////////////////////
 // CARDS Nested CRUD Methods
@@ -72,6 +77,6 @@ module.exports = {
   createUser,
   getUserByEmail,
   getAllDecks,
-  getOneDeck
-
+  getOneDeck,
+  createDeck
 }

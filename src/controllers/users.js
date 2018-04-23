@@ -41,6 +41,15 @@ function getOneDeck(req, res, next) {
   .catch(next)
 }
 
+function createDeck(req, res, next){
+
+  userModel.createDeck(req.params.id, req.body.deckName, req.body.description)
+  .then(function(data){
+    return res.status(201).send({ data })
+  })
+  .catch(next)
+}
+
 ////////////////////////////////////////////////////////////////////
 // CARDS Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
@@ -53,5 +62,6 @@ function getOneDeck(req, res, next) {
 module.exports = {
   createUser,
   getAllDecks,
-  getOneDeck
+  getOneDeck,
+  createDeck
 }

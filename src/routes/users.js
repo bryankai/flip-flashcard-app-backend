@@ -13,7 +13,7 @@ router.post('/', userController.createUser)
 ////////////////////////////////////////////////////////////////////
 // DECK Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
-// router.post('/:id/decks', userController.createDeck)
+router.post('/:id/decks', userController.createDeck)
 router.get('/:id/decks', userController.getAllDecks)
 router.get('/:id/decks/:deckId', userController.getOneDeck)
 // router.delete('/:id/decks/:deckId', userController.removeDeck)
