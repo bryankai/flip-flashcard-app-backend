@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL data from each of the tables
   // This is necessary so you can seed multiple times
-  return knex('users_cards').del()
+  return knex('attempts').del()
     .then(function() {
       return knex('cards').del()
     })
