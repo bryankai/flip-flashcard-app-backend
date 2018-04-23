@@ -30,6 +30,9 @@ function createUser(email, password){
       db('users')
       .insert({ email, password: hashedPassword })
       .returning('*')
+      .then(function([data]){
+        return data
+      })
     )
   })
   .then(function([ data ]){
@@ -43,6 +46,17 @@ function createUser(email, password){
 ////////////////////////////////////////////////////////////////////
 // DECK Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
+function createDeck(users_id, deckName, description) {
+  return (
+    db('decks')
+    .insert({ users_id, deckName, description })
+    .returning('*')
+    .then(function([data]){
+      return data
+    })
+  )
+}
+
 function getAllDecks(users_id){
   return (
     db('decks')
@@ -59,11 +73,30 @@ function getOneDeck(users_id, id){
   )
 }
 
-function createDeck(users_id, deckName, description) {
+function editDeck(users_id, id, deckName, description){
   return (
     db('decks')
-    .insert({ users_id, deckName, description })
+    .where({ users_id })
+    .where({ id })
+    .update({ deckName, description })
     .returning('*')
+    .then(function([data]){
+      return data
+    })
+  )
+}
+
+function removeDeck(users_id, id){
+  return (
+    db('decks')
+    .where({ users_id })
+    .where({ id })
+    .del()
+    .returning('*')
+    .then(function([data]){
+      delete data.id
+      return data
+    })
   )
 }
 
@@ -75,8 +108,9 @@ function createDeck(users_id, deckName, description) {
 
 module.exports = {
   createUser,
-  getUserByEmail,
+  createDeck,
   getAllDecks,
   getOneDeck,
-  createDeck
+  editDeck,
+  removeDeck
 }
