@@ -15,8 +15,10 @@ function getOneByEmail(email){
   )
 }
 
-function getAll(){
-  return db('users')
+function getAllDecks(){
+  return (
+    db('decks')
+  )
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -30,10 +32,10 @@ function getAll(){
 // 5. "return/continue" promise
 //////////////////////////////////////////////////////////////////////////////
 
-function create(email, password){
+function createUser(email, password){
     console.log('model create')
   // check to see of user already exists
-  return getOneByUserName(email)
+  return getOneByEmail(email)
   .then(function(data){
     // if user already exists, return 400
     if(data) throw { status: 400, message:'Email already being used'}
@@ -60,5 +62,6 @@ function create(email, password){
 
 module.exports = {
   getOneByEmail,
-  create
+  getAllDecks,
+  createUser
 }
