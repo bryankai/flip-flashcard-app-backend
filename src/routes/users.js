@@ -7,8 +7,7 @@ const userController = require('../controllers/users')
 ////////////////////////////////////////////////////////////////////
 
 router.post('/', userController.createUser)
-
-// router.get('/', userController.getAllUsers)
+router.get('/', userController.getAllUsers)
 
 ////////////////////////////////////////////////////////////////////
 // DECK Nested CRUD Methods
@@ -16,8 +15,8 @@ router.post('/', userController.createUser)
 router.post('/:id/decks', userController.createDeck)
 router.get('/:id/decks', userController.getAllDecks)
 router.get('/:id/decks/:deckId', userController.getOneDeck)
-router.delete('/:id/decks/:deckId', userController.removeDeck)
 router.put('/:id/decks/:deckId', userController.editDeck)
+router.delete('/:id/decks/:deckId', userController.removeDeck)
 
 ////////////////////////////////////////////////////////////////////
 // CARDS Nested CRUD Methods

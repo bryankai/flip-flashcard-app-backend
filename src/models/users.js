@@ -5,7 +5,14 @@ const bcrypt = require('bcrypt-as-promised')
 // Basic CRUD Methods
 ////////////////////////////////////////////////////////////////////
 
+function getAllUsers(users_id){
+  return (
+    db('users')
+  )
+}
+
 function getUserByEmail(email){
+  console.log(email)
   return (
     db('users')
     .where({ email })
@@ -13,34 +20,35 @@ function getUserByEmail(email){
   )
 }
 
-function createUser(email, password){
+function createUser(name, email, password){
   // check to see of user already exists
+  console.log('models createUser')
   return getUserByEmail(email)
   .then(function(data){
     // if user already exists, return 400
     if(data) throw { status: 400, message:'Email already being used'}
-
+    console.log('about to hash')
     // hash password
     return bcrypt.hash(password, 10)
   })
   .then(function(hashedPassword){
-
+    console.log(hashedPassword)
     // 3. Insert record into database
     return (
       db('users')
-      .insert({ email, password: hashedPassword })
+      .insert({ name, email, password: hashedPassword })
       .returning('*')
       .then(function([data]){
         return data
       })
     )
   })
-  .then(function([ data ]){
-    // 4. strip hashed password away from object
-    delete data.password
-    // 5. "return/continue" promise
-    return data
-  })
+  // .then(function([ data ]){
+  //   // 4. strip hashed password away from object
+  //   delete data.password
+  //   // 5. "return/continue" promise
+  //   return data
+  // })
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -108,6 +116,7 @@ function removeDeck(users_id, id){
 
 module.exports = {
   createUser,
+  getAllUsers,
   createDeck,
   getAllDecks,
   getOneDeck,
