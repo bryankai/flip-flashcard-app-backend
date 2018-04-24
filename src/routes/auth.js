@@ -7,7 +7,7 @@ const authController = require('../controllers/auth')
 //////////////////////////////////////////////////////////////////////////////
 
 router.get('/token', authController.isAuthenticated, authController.getAuthStatus)
-router.post('/token', authController.login) // This used to be login
+router.post('/token', authController.login) // This used to login
 
 
 

@@ -117,6 +117,7 @@ function removeDeck(users_id, id){
 module.exports = {
   createUser,
   getAllUsers,
+  getUserByEmail,
   createDeck,
   getAllDecks,
   getOneDeck,
