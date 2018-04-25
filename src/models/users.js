@@ -123,11 +123,33 @@ function createCard(decks_id, bibleReference, passage) {
   )
 }
 
-
 function getAllCards(decks_id){
   return (
     db('cards')
     .where({ decks_id })
+  )
+}
+
+function getOneCard(decks_id, id){
+  return (
+    db('cards')
+    .where({ decks_id })
+    .where({ id })
+    .first()
+  )
+}
+
+function removeCard(decks_id, id){
+  return (
+    db('cards')
+    .where({ decks_id })
+    .where({ id })
+    .del()
+    .returning('*')
+    .then(function([data]){
+      delete data.id
+      return data
+    })
   )
 }
 
@@ -141,5 +163,7 @@ module.exports = {
   editDeck,
   removeDeck,
   createCard,
-  getAllCards
+  getAllCards,
+  getOneCard,
+  removeCard
 }

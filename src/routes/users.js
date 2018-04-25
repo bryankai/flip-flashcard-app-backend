@@ -21,10 +21,10 @@ router.delete('/:id/decks/:deckId', userController.removeDeck)
 ////////////////////////////////////////////////////////////////////
 // CARDS Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
-router.get('/:id/decks/:deckId/cards', userController.getAllCards)
-// router.get('/:id/decks/:deckId/cards/:cardId', userController.getOneCard)
 router.post('/:id/decks/:deckId/cards', userController.createCard)
-// router.delete('/:id', userController.removeCard)
+router.get('/:id/decks/:deckId/cards', userController.getAllCards)
+router.get('/:id/decks/:deckId/cards/:cardId', userController.getOneCard)
+router.delete('/:id/decks/:deckId/cards/:cardId', userController.removeCard)
 // router.put('/:id', userController.updateCard)
 
 module.exports = router
