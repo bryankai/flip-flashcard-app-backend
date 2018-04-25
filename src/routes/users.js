@@ -24,7 +24,8 @@ router.delete('/:id/decks/:deckId', userController.removeDeck)
 router.post('/:id/decks/:deckId/cards', userController.createCard)
 router.get('/:id/decks/:deckId/cards', userController.getAllCards)
 router.get('/:id/decks/:deckId/cards/:cardId', userController.getOneCard)
+router.put('/:id/decks/:deckId/cards/:cardId', userController.editCard)
 router.delete('/:id/decks/:deckId/cards/:cardId', userController.removeCard)
-// router.put('/:id', userController.updateCard)
+
 
 module.exports = router

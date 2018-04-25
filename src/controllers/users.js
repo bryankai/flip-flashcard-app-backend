@@ -164,6 +164,26 @@ function getOneCard(req, res, next) {
   .catch(next)
 }
 
+function editCard(req, res, next) {
+  if(!req.params.deckId){
+    return next({ status: 400, message: 'Please provide deckId'})
+  }
+  if(!req.params.cardId){
+    return next({ status: 400, message: 'Please cardId'})
+  }
+  if(!req.body.bibleReference){
+    return next({ status: 400, message: 'Please provide Bible reference'})
+  }
+  if(!req.body.passage){
+    return next({ status: 400, message: 'Please provide passage'})
+  }
+  userModel.editCard(req.params.deckId, req.params.cardId, req.body.bibleReference, req.body.passage)
+  .then(function(data){
+    return res.status(200).send({ data })
+  })
+  .catch(next)
+}
+
 function removeCard(req, res, next) {
   if(!req.params.deckId){
     return next({ status: 400, message: 'Please provide deckId'})
@@ -194,5 +214,6 @@ module.exports = {
   createCard,
   getAllCards,
   getOneCard,
+  editCard,
   removeCard
 }

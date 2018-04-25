@@ -139,6 +139,19 @@ function getOneCard(decks_id, id){
   )
 }
 
+function editCard(decks_id, id, bibleReference, passage){
+  return (
+    db('cards')
+    .where({ decks_id })
+    .where({ id })
+    .update({ bibleReference, passage })
+    .returning('*')
+    .then(function([data]){
+      return data
+    })
+  )
+}
+
 function removeCard(decks_id, id){
   return (
     db('cards')
@@ -165,5 +178,6 @@ module.exports = {
   createCard,
   getAllCards,
   getOneCard,
+  editCard,
   removeCard
 }
