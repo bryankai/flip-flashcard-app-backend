@@ -124,6 +124,23 @@ function removeDeck(req, res, next) {
 ////////////////////////////////////////////////////////////////////
 // CARDS Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
+function createCard(req, res, next){
+  if(!req.params.deckId){
+    return next({ status: 400, message: 'Please provide decks_id'})
+  }
+  if(!req.body.bibleReference){
+    return next({ status: 400, message: 'Please provide Bible reference'})
+  }
+  if(!req.body.passage){
+    return next({ status: 400, message: 'Please provide passage'})
+  }
+
+  userModel.createCard(req.params.deckId, req.body.bibleReference, req.body.passage)
+  .then(function(data){
+    return res.status(201).send({ data })
+  })
+  .catch(next)
+}
 
 
 ////////////////////////////////////////////////////////////////////
@@ -137,5 +154,6 @@ module.exports = {
   getAllDecks,
   getOneDeck,
   editDeck,
-  removeDeck
+  removeDeck,
+  createCard
 }

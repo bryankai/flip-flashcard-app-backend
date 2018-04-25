@@ -112,7 +112,16 @@ function removeDeck(users_id, id){
 ////////////////////////////////////////////////////////////////////
 // CARDS Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
-
+function createCard(decks_id, bibleReference, passage) {
+  return (
+    db('cards')
+    .insert({ decks_id, bibleReference, passage })
+    .returning('*')
+    .then(function([data]){
+      return data
+    })
+  )
+}
 
 module.exports = {
   createUser,
@@ -122,5 +131,6 @@ module.exports = {
   getAllDecks,
   getOneDeck,
   editDeck,
-  removeDeck
+  removeDeck,
+  createCard
 }

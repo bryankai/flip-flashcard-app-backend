@@ -21,9 +21,9 @@ router.delete('/:id/decks/:deckId', userController.removeDeck)
 ////////////////////////////////////////////////////////////////////
 // CARDS Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
-// router.get('/', userController.getAllCards)
-// router.get('/:id', userController.getOneCard)
-// router.post('/', userController.createCards)
+// router.get('/:id/decks/:deckId/cards', userController.getAllCards)
+// router.get('/:id/decks/:deckId/cards/:cardId', userController.getOneCard)
+router.post('/:id/decks/:deckId/cards', userController.createCard)
 // router.delete('/:id', userController.removeCard)
 // router.put('/:id', userController.updateCard)
 
