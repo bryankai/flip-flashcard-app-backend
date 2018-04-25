@@ -108,7 +108,7 @@ function removeDeck(req, res, next) {
     return next({ status: 400, message: 'Please provide users_id'})
   }
   if(!req.params.deckId){
-    return next({ status: 400, message: 'Please provide deckId'})
+    return next({ status: 400, message: 'Please provide decks_id'})
   }
 
   userModel.removeDeck(req.params.id, req.params.deckId)
@@ -142,6 +142,16 @@ function createCard(req, res, next){
   .catch(next)
 }
 
+function getAllCards(req, res, next) {
+  if(!req.params.deckId){
+    return next({ status: 400, message: 'Please provide cards_id'})
+  }
+  userModel.getAllCards(req.params.deckId)
+  .then(function(data){
+    return res.status(200).send({ data })
+  })
+  .catch(next)
+}
 
 ////////////////////////////////////////////////////////////////////
 // Quality of Life functions
@@ -155,5 +165,6 @@ module.exports = {
   getOneDeck,
   editDeck,
   removeDeck,
-  createCard
+  createCard,
+  getAllCards
 }

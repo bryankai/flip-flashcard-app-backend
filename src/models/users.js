@@ -123,6 +123,14 @@ function createCard(decks_id, bibleReference, passage) {
   )
 }
 
+
+function getAllCards(decks_id){
+  return (
+    db('cards')
+    .where({ decks_id })
+  )
+}
+
 module.exports = {
   createUser,
   getAllUsers,
@@ -132,5 +140,6 @@ module.exports = {
   getOneDeck,
   editDeck,
   removeDeck,
-  createCard
+  createCard,
+  getAllCards
 }
