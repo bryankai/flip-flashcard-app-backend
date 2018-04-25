@@ -137,19 +137,6 @@ function createCard(req, res, next){
   .catch(next)
 }
 
-
-function getAllCards(req, res, next) {
-  if(!req.params.deckId){
-    return next({ status: 400, message: 'Please provide deckId'})
-  }
-  userModel.getAllCards(req.params.deckId)
-  .then(function(data){
-    return res.status(200).send({ data })
-  })
-  .catch(next)
-}
-
-
 function getOneCard(req, res, next) {
   if(!req.params.deckId){
     return next({ status: 400, message: 'Please provide deckId'})
@@ -163,6 +150,18 @@ function getOneCard(req, res, next) {
   })
   .catch(next)
 }
+
+function getAllCards(req, res, next) {
+  if(!req.params.deckId){
+    return next({ status: 400, message: 'Please provide deckId'})
+  }
+  userModel.getAllCards(req.params.deckId)
+  .then(function(data){
+    return res.status(200).send({ data })
+  })
+  .catch(next)
+}
+
 
 function editCard(req, res, next) {
   if(!req.params.deckId){
@@ -198,6 +197,33 @@ function removeCard(req, res, next) {
   .catch(next)
 }
 
+////////////////////////////////////////////////////////////////////
+// ATTEMPTS Nested CRUD Methods
+////////////////////////////////////////////////////////////////////
+function createAttempt(req, res, next){
+  if(!req.params.cardId){
+    return next({ status: 400, message: 'Please provide cardId'})
+  }
+  if(!req.body.correct){
+    return next({ status: 400, message: 'Please provide if attempt was correct or wrong'})
+  }
+  userModel.createAttempt(req.params.cardId, req.body.correct)
+  .then(function(data){
+    return res.status(201).send({ data })
+  })
+  .catch(next)
+}
+
+function getAllAttempts(req, res, next) {
+  if(!req.params.cardId){
+    return next({ status: 400, message: 'Please provide cardId'})
+  }
+  userModel.getAllAttempts(req.params.cardId)
+  .then(function(data){
+    return res.status(200).send({ data })
+  })
+  .catch(next)
+}
 
 ////////////////////////////////////////////////////////////////////
 // Quality of Life functions
@@ -215,5 +241,7 @@ module.exports = {
   getAllCards,
   getOneCard,
   editCard,
-  removeCard
+  removeCard,
+  createAttempt,
+  getAllAttempts
 }

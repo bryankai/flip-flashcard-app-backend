@@ -3,7 +3,6 @@ const TABLE_NAME = 'attempts'
 exports.up = function(knex, Promise) {
   return knex.schema.createTable(TABLE_NAME, function(table) {
     table.increments()
-    table.integer('users_id').notNullable().references('users.id')
     table.integer('cards_id').notNullable().references('cards.id')
     table.boolean('correct')
     table.timestamps(true, true)

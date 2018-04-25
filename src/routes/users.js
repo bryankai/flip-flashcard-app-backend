@@ -22,10 +22,19 @@ router.delete('/:id/decks/:deckId', userController.removeDeck)
 // CARDS Nested CRUD Methods
 ////////////////////////////////////////////////////////////////////
 router.post('/:id/decks/:deckId/cards', userController.createCard)
-router.get('/:id/decks/:deckId/cards', userController.getAllCards)
-router.get('/:id/decks/:deckId/cards/:cardId', userController.getOneCard)
+router.get('/:id/decks/:deckId/cards/', userController.getAllCards)
+router.get('/:id/decks/:deckId/cards/:cardId/', userController.getOneCard)
 router.put('/:id/decks/:deckId/cards/:cardId', userController.editCard)
 router.delete('/:id/decks/:deckId/cards/:cardId', userController.removeCard)
+
+////////////////////////////////////////////////////////////////////
+// ATTEMPTS Nested CRUD Methods
+////////////////////////////////////////////////////////////////////
+router.post('/:id/decks/:deckId/cards/:cardId/attempts', userController.createAttempt)
+router.get('/:id/decks/:deckId/cards/:cardId/attempts', userController.getAllAttempts)
+// router.get('/:id/attempts/:attemptsID', userController.getOneAttempt)
+// router.put('/:id/attempts/:attemptsID', userController.editAttempt)
+// router.delete('/:id/attempts/:attemptsID', userController.removeAttempt)
 
 
 module.exports = router

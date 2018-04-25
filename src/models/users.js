@@ -166,6 +166,27 @@ function removeCard(decks_id, id){
   )
 }
 
+////////////////////////////////////////////////////////////////////
+// ATTEMPT Nested CRUD Methods
+////////////////////////////////////////////////////////////////////
+function createAttempt(cards_id, correct) {
+  return (
+    db('attempts')
+    .insert({ cards_id, correct })
+    .returning('*')
+    .then(function([data]){
+      return data
+    })
+  )
+}
+
+function getAllAttempts(cards_id){
+  return (
+    db('attempts')
+    .where({ cards_id })
+  )
+}
+
 module.exports = {
   createUser,
   getAllUsers,
@@ -179,5 +200,7 @@ module.exports = {
   getAllCards,
   getOneCard,
   editCard,
-  removeCard
+  removeCard,
+  createAttempt,
+  getAllAttempts
 }

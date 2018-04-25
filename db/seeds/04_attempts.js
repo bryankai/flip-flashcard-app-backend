@@ -6,12 +6,12 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex(TABLE_NAME).insert([
-        {id: 1, users_id: 1, cards_id: 1, correct: true},
-        {id: 2, users_id: 1, cards_id: 2, correct: false},
-        {id: 3, users_id: 1, cards_id: 1, correct: false},
-        {id: 4, users_id: 1, cards_id: 2, correct: false},
-        {id: 5, users_id: 1, cards_id: 1, correct: true},
-        {id: 6, users_id: 1, cards_id: 2, correct: true}
+        {id: 1, cards_id: 1, correct: true},
+        {id: 2, cards_id: 2, correct: false},
+        {id: 3, cards_id: 1, correct: false},
+        {id: 4, cards_id: 2, correct: false},
+        {id: 5, cards_id: 1, correct: true},
+        {id: 6, cards_id: 3, correct: true}
       ])
     })
     .then(() => {
