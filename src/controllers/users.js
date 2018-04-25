@@ -10,11 +10,9 @@ function createUser(req, res, next){
   if(!req.body.name){
     return next({ status: 400, message: 'Invalid Name'})
   }
-
   if(!req.body.password){
     return next({ status: 400, message: 'Invalid Password'})
   }
-
   userModel.createUser(req.body.name, req.body.email, req.body.password)
   .then(function(data){
     return res.status(201).send({ data })
@@ -44,14 +42,12 @@ function createDeck(req, res, next){
   if(!req.body.description){
     return next({ status: 400, message: 'Please provide description'})
   }
-
   userModel.createDeck(req.params.id, req.body.deckName, req.body.description)
   .then(function(data){
     return res.status(201).send({ data })
   })
   .catch(next)
 }
-
 
 function getAllDecks(req, res, next) {
   if(!req.params.id){
@@ -63,7 +59,6 @@ function getAllDecks(req, res, next) {
   })
   .catch(next)
 }
-
 
 function getOneDeck(req, res, next) {
   if(!req.params.id){
@@ -80,7 +75,6 @@ function getOneDeck(req, res, next) {
   .catch(next)
 }
 
-
 function editDeck(req, res, next) {
   if(!req.params.id){
     return next({ status: 400, message: 'Please provide id'})
@@ -94,14 +88,12 @@ function editDeck(req, res, next) {
   if(!req.body.description){
     return next({ status: 400, message: 'Please provide description'})
   }
-
   userModel.editDeck(req.params.id, req.params.deckId, req.body.deckName, req.body.description)
   .then(function(data){
     return res.status(200).send({ data })
   })
   .catch(next)
 }
-
 
 function removeDeck(req, res, next) {
   if(!req.params.id){
@@ -161,7 +153,6 @@ function getAllCards(req, res, next) {
   })
   .catch(next)
 }
-
 
 function editCard(req, res, next) {
   if(!req.params.deckId){
