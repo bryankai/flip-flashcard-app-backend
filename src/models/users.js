@@ -173,6 +173,13 @@ function getAllAttempts(cards_id){
   )
 }
 
+function getAllAttemptsForUser(user_id){
+  return (
+    db('users')
+    .innerJoin('decks', )
+  )
+}
+
 module.exports = {
   createUser,
   getAllUsers,
