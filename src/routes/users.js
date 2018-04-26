@@ -36,5 +36,9 @@ router.get('/:id/decks/:deckId/cards/:cardId/attempts', userController.getAllAtt
 // router.put('/:id/attempts/:attemptsID', userController.editAttempt)
 // router.delete('/:id/attempts/:attemptsID', userController.removeAttempt)
 
+////////////////////////////////////////////////////////////////////
+// User Attempts Methods
+////////////////////////////////////////////////////////////////////
+router.get('/:id/allAttempts', userController.getAllUserAttempts)
 
 module.exports = router

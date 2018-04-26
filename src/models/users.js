@@ -173,10 +173,15 @@ function getAllAttempts(cards_id){
   )
 }
 
-function getAllAttemptsForUser(user_id){
+////////////////////////////////////////////////////////////////////
+// User Attempts Methods
+////////////////////////////////////////////////////////////////////
+function getAllUserAttempts(users_id){
   return (
-    db('users')
-    .innerJoin('decks', )
+    db.from('decks')
+    .innerJoin('cards', 'decks_id', 'decks.id')
+    .innerJoin('attempts', 'cards_id', 'cards.id')
+    .where({ users_id })
   )
 }
 
@@ -195,5 +200,6 @@ module.exports = {
   editCard,
   removeCard,
   createAttempt,
-  getAllAttempts
+  getAllAttempts,
+  getAllUserAttempts
 }

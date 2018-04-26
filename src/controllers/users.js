@@ -217,6 +217,20 @@ function getAllAttempts(req, res, next) {
 }
 
 ////////////////////////////////////////////////////////////////////
+// User Attempts Methods
+////////////////////////////////////////////////////////////////////
+function getAllUserAttempts(req, res, next) {
+  if(!req.params.id){
+    return next({ status: 400, message: 'Please provide id'})
+  }
+  userModel.getAllUserAttempts(req.params.id)
+  .then(function(data){
+    return res.status(200).send({ data })
+  })
+  .catch(next)
+}
+
+////////////////////////////////////////////////////////////////////
 // Quality of Life functions
 ////////////////////////////////////////////////////////////////////
 
@@ -234,5 +248,6 @@ module.exports = {
   editCard,
   removeCard,
   createAttempt,
-  getAllAttempts
+  getAllAttempts,
+  getAllUserAttempts
 }
