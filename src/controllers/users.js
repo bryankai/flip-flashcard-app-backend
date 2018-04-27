@@ -5,8 +5,6 @@ const userModel = require('../models/users')
 ////////////////////////////////////////////////////////////////////
 
 function createUser(req, res, next){
-  console.log('controller create')
-  console.log(req.body)
   if(!req.body.name){
     return next({ status: 400, message: 'Invalid Name'})
   }
@@ -22,6 +20,18 @@ function createUser(req, res, next){
 
 function getAllUsers(req, res, next) {
   userModel.getAllUsers()
+  .then(function(data){
+    return res.status(200).send({ data })
+  })
+  .catch(next)
+}
+
+function getOneUser(req, res, next) {
+  if(!req.params.id){
+    return next({ status: 400, message: 'Please provide id'})
+  }
+
+  userModel.getOneUser(req.params.id)
   .then(function(data){
     return res.status(200).send({ data })
   })
@@ -237,6 +247,7 @@ function getAllUserAttempts(req, res, next) {
 module.exports = {
   createUser,
   getAllUsers,
+  getOneUser,
   createDeck,
   getAllDecks,
   getOneDeck,

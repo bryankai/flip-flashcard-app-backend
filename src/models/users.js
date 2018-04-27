@@ -19,6 +19,14 @@ function getUserByEmail(email){
   )
 }
 
+function getOneUser(id){
+  return (
+    db('users')
+    .where({ id })
+    .first()
+  )
+}
+
 function createUser(name, email, password){
   return getUserByEmail(email)
   .then(function(data){
@@ -188,6 +196,7 @@ function getAllUserAttempts(users_id){
 module.exports = {
   createUser,
   getAllUsers,
+  getOneUser,
   getUserByEmail,
   createDeck,
   getAllDecks,

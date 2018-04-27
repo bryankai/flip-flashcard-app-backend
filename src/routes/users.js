@@ -8,6 +8,7 @@ const userController = require('../controllers/users')
 
 router.post('/', userController.createUser)
 router.get('/', userController.getAllUsers)
+router.get('/:id', userController.getOneUser)
 
 ////////////////////////////////////////////////////////////////////
 // DECK Nested CRUD Methods

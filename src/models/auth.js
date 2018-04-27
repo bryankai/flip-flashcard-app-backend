@@ -25,12 +25,9 @@ function login(email, password){
   return userModel.getUserByEmail(email)
   .then(function(data){
     // 1a. if not, return a 400 with appropriate error message
-    console.log(data)
     if(!data) throw { status: 400, message: "Bad Request"}
-
     // save user for later use
     user = data
-    console.log(data)
     // 2. compare password in the database with the password provided by user
     return bcrypt.compare(password, data.password)
     // password is not hashed. bcrypt hashes it then compares it

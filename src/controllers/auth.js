@@ -17,7 +17,6 @@ const jwt = require('jsonwebtoken')
 
 function login(req, res, next){
   // 1. Make sure that request is good
-  console.log(req.body)
   if(!req.body.email){
     return next({ status: 400, message: 'Bad request'})
   }
@@ -25,7 +24,6 @@ function login(req, res, next){
   if(!req.body.password){
     return next({ status: 400, message: 'Bad request'})
   }
-  console.log('email and password submitted')
   // 2. Attempt Login
   authModel.login(req.body.email, req.body.password)
   .then(function(user){
@@ -49,7 +47,6 @@ function getAuthStatus(req, res, next){
 //////////////////////////////////////////////////////////////////////////////
 
 function isAuthenticated(req, res, next){
-  console.log(req.headers)
   if(!req.headers.authorization){
     return next({ status: 401, message: 'Unauthorized' })
   }
