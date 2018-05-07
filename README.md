@@ -1,25 +1,7 @@
-# bible-memorization-backend
+# Flip - Backend Repo
+https://bk-flip-app.herokuapp.com/
 
-## To Install
+An interactive flashcard web application to help users memorize information.  Users can create decks to organize groups of cards by topic or any grouping you want.  You can take a quiz on different decks and get the results for the latest quiz session.  The user's total score is stored in the database and displayed next to their name in the header.
 
-```
-npm install
-```
-
-```
-createdb auth_example_dev
-```
-
-```
-npm run latest
-```
-
-```
-cp .env.example .env
-```
-
-## To Run Server
-
-```
-npm run dev
-```
+### Entity Relationship Diagram (ERD)
+![ERD](./erd/BibleApp2.png)
