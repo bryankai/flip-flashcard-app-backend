@@ -60,21 +60,16 @@ function isAuthenticated(req, res, next){
     }
 
     req.claim = payload
-
     next()
   })
 }
 
 function isSelf(req, res, next){
-
   if(parseInt(req.params.userId) !== req.claim.id){
     return next({ status: 401, message: 'Unauthorized' })
   }
-
   next()
 }
-
-
 
 module.exports = {
   login,

@@ -12,8 +12,3 @@ exports.seed = function(knex, Promise) {
       return knex('users').del()
     });
 };
-//
-// exports.seed = function(knex, Promise) {
-//   const tablesToClean = ['students', 'cohorts']
-//   return tablesToClean.reduce((acc, ele) => acc.then(() => knex(ele).del()), Promise.resolve())
-// };
