@@ -5,3 +5,11 @@ An interactive flashcard web application to help users memorize information.  Us
 
 ### Entity Relationship Diagram (ERD)
 ![ERD](./erd/flip-erd.png)
+
+
+### Setup Instructions
+1. Install the node packages: ```npm install ```
+2. Create the database: ```createdb bible_mem_dev```
+3. Migrate the tables: ```npm run knex migrate:latest```
+4. Run the seeds: ```npm run knex seed:run```
+5. Run the server in Development Mode ```npm run dev```
